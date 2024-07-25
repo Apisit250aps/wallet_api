@@ -1,5 +1,5 @@
 import app from "./app"
-import connectDB from "./models/db"
+import connectDB from "./db"
 
 const port = process.env.PORT || 3000
 
