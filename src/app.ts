@@ -5,6 +5,7 @@ import cors from "cors"
 import morgan from "morgan"
 import helmet from "helmet"
 import auth from "./routes/auth.route"
+import wallet from "./routes/wallet.route"
 
 // define app
 const app = express()
@@ -22,6 +23,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, TypeScript with Express!")
 })
 
-app.use('/auth', auth)
-
+app.use("/auth", auth)
+app.use("/wallet", wallet)
+// 
 export default app

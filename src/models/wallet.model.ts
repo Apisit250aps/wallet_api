@@ -4,7 +4,7 @@ export interface IWallet extends Document {
   userId: Types.ObjectId
   name: string
   type: "cash" | "bank" | "mix"
-  balance: number
+  balance?: number
   transactions: Types.ObjectId[]
   note?: String
   createdAt: Date
@@ -21,7 +21,7 @@ const WalletSchema: Schema = new Schema({
     required: true
   },
   note: { type: String },
-  balance: { type: Number, required: true },
+  balance: { type: Number, required: false, default: 0 },
   transactions: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
