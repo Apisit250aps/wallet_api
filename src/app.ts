@@ -4,7 +4,8 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import morgan from "morgan"
 import helmet from "helmet"
-import authRoute from "./routes/auth"
+import auth from "./routes/auth.route"
+
 // define app
 const app = express()
 
@@ -21,6 +22,6 @@ app.post("/", (req: Request, res: Response) => {
   res.send("Hello, TypeScript with Express!")
 })
 
-app.use("/auth", authRoute)
+app.use('/auth', auth)
 
 export default app

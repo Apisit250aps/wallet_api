@@ -1,8 +1,8 @@
 import mongoose, { Schema, Document, Types } from "mongoose"
 
 export interface IUser extends Document {
-  name: string
-  email: string
+  username: string
+  email?: string
   password: String
   isAdmin: Boolean
   wallets: Types.ObjectId[]
@@ -11,8 +11,8 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
+  username: { type: String, required: true },
+  email: { type: String, required: false },
   password: { type: String, required: true },
   wallets: [{ type: Schema.Types.ObjectId, ref: "Wallet" }],
   isAdmin: { type: Boolean, default: false },
