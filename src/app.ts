@@ -17,7 +17,7 @@ app.use(morgan("dev"))
 app.use(helmet())
 
 // index route
-app.post("/", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   console.log(req.body)
   res.send("Hello, TypeScript with Express!")
 })
