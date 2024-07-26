@@ -1,6 +1,6 @@
 import { Response, NextFunction } from "express"
 import { verifyToken } from "../utils/jwt"
-import { IUser } from "../models/user"
+import { IUser } from "../models/user.model"
 
 declare global {
   namespace Express {
