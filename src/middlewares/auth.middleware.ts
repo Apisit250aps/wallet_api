@@ -1,19 +1,19 @@
 import { Response, NextFunction } from "express"
 import { verifyToken } from "../utils/jwt"
-import { IUser } from "../models/user.model"
+import { IUser, User } from "../models/user.model"
 
 declare global {
   namespace Express {
     interface Request {
       user?: IUser // Add optional user property
       headers: {
-        authorization?: String
+        authorization?: string
       }
     }
   }
 }
 
-export const authenticateJWT = (
+export const authenticateJWT = async (
   req: Express.Request,
   res: Response,
   next: NextFunction
@@ -25,7 +25,13 @@ export const authenticateJWT = (
 
     try {
       const decoded = verifyToken(token) as IUser // Ensure that decoded is of type IUser
-      req.user = decoded // Save decoded token information to request object
+      const user = await User.findById(decoded.userId) // ตรวจสอบว่าผู้ใช้ยังมีอยู่ในฐานข้อมูล
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" })
+      }
+
+      req.user = user // Save user information to request object
       next()
     } catch (error) {
       return res.status(403).json({ error: "Forbidden" })
