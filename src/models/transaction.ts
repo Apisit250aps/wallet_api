@@ -3,8 +3,8 @@ import mongoose, { Schema, Document, Types } from "mongoose"
 export interface ITransaction extends Document {
   walletId: Types.ObjectId
   amount: number
-  type: "รายรับ" | "รายจ่าย"
-  category: "รายรับ" | "รายจ่าย"
+  type: "income" | "expense"
+  category: "income" | "expense"
   date: Date
   tags: Types.ObjectId[]
   note?: string
@@ -15,8 +15,8 @@ export interface ITransaction extends Document {
 const TransactionSchema: Schema = new Schema({
   walletId: { type: Schema.Types.ObjectId, ref: "Wallet", required: true },
   amount: { type: Number, required: true },
-  type: { type: String, enum: ["รายรับ", "รายจ่าย"], required: true },
-  category: { type: String, enum: ["รายรับ", "รายจ่าย"], required: true },
+  type: { type: String, enum: ["income", "expense"], required: true },
+  category: { type: String, enum: ["income", "expense"], required: true },
   date: { type: Date, required: true },
   tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
   note: { type: String },
