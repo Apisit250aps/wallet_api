@@ -21,4 +21,16 @@ const UserSchema: Schema = new Schema({
   updatedAt: { type: Date, default: Date.now }
 })
 
+
+UserSchema.pre("findOneAndUpdate", function (next) {
+  this.set({ updatedAt: new Date() })
+  next()
+})
+
+UserSchema.pre("updateOne", function (next) {
+  this.set({ updatedAt: new Date() })
+  next()
+})
+
+
 export const User = mongoose.model<IUser>("User", UserSchema)

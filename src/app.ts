@@ -6,6 +6,7 @@ import morgan from "morgan"
 import helmet from "helmet"
 import auth from "./routes/auth.route"
 import wallet from "./routes/wallet.route"
+import transaction from "./routes/transaction.route"
 
 // define app
 const app = express()
@@ -25,5 +26,6 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/auth", auth)
 app.use("/wallet", wallet)
+app.use("/transaction", transaction)
 // 
 export default app

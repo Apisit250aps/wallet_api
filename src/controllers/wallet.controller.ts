@@ -9,14 +9,15 @@ export default {
   ) {
     try {
       const { name, type, balance, note } = req.body
-      const userId = req.user?.userId
+      const userId = req.user?._id
+     
 
       const newWallet = await Wallet.create({
+        userId,
         name,
         type,
         balance,
-        note,
-        userId
+        note
       })
 
       await User.findByIdAndUpdate(userId, {
@@ -27,6 +28,7 @@ export default {
         message: "Create new wallet successfully!",
         wallet: newWallet
       })
+
     } catch (error) {
       console.error(error)
       res.status(500).json({ error: "Internal Server Error" })

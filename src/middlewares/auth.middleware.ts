@@ -33,6 +33,7 @@ export const authenticateJWT = async (
 
       req.user = user // Save user information to request object
       next()
+
     } catch (error) {
       return res.status(403).json({ error: "Forbidden" })
     }

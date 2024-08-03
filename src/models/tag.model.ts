@@ -12,4 +12,14 @@ const TagSchema: Schema = new Schema({
   updatedAt: { type: Date, default: Date.now }
 })
 
+TagSchema.pre("findOneAndUpdate", function (next) {
+  this.set({ updatedAt: new Date() })
+  next()
+})
+
+TagSchema.pre("updateOne", function (next) {
+  this.set({ updatedAt: new Date() })
+  next()
+})
+
 export const Tag = mongoose.model<ITag>("Tag", TagSchema)

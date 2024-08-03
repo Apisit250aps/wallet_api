@@ -4,6 +4,7 @@ export interface IWallet extends Document {
   userId: Types.ObjectId
   name: string
   type: "cash" | "bank" | "mix"
+  currency: String
   balance?: number
   transactions: Types.ObjectId[]
   note?: String
@@ -20,11 +21,22 @@ const WalletSchema: Schema = new Schema({
     default: "cash",
     required: true
   },
+  currency: { type: String, require: true, default: "BTH" },
   note: { type: String },
   balance: { type: Number, required: false, default: 0 },
   transactions: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
+})
+
+WalletSchema.pre("findOneAndUpdate", function (next) {
+  this.set({ updatedAt: new Date() })
+  next()
+})
+
+WalletSchema.pre("updateOne", function (next) {
+  this.set({ updatedAt: new Date() })
+  next()
 })
 
 export const Wallet = mongoose.model<IWallet>("Wallet", WalletSchema)
