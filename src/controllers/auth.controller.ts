@@ -49,15 +49,5 @@ export default {
       console.error(error)
       return res.status(500).json({ error })
     }
-  },
-  async userInformation(req: Request<{ user?: IUser }>, res: Response) {
-    const user = await User.findById(req.user?.userId)
-      .populate({
-        path: 'wallets',
-       
-      })
-      .exec();
-      
-    res.status(200).json({ id: user })
   }
 }

@@ -6,7 +6,7 @@ const auth = Router()
 
 auth.post("/register", authController.userRegister)
 auth.post("/login", authController.userLogin)
+// authenticated middleware
 auth.use(authenticateJWT)
-auth.get('/info', authController.userInformation)
 // 
 export default auth
