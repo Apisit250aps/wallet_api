@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "src/**/*.ts": {
+    "src/routes/*.ts": {
       "maxDuration": 30
     }
   },
