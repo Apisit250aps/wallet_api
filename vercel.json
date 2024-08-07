@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "src/routes/auth.route.ts": {
+    "auth/login": {
       "maxDuration": 30
     }
   },
