@@ -5,8 +5,7 @@
       "src": "src/server.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["src/**/*.ts"],
-        "maxDuration": 30
+        "includeFiles": ["src/**/*.ts"]
       }
     }
   ],
