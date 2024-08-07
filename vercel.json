@@ -1,5 +1,10 @@
 {
   "version": 2,
+  "functions": {
+    "src/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
   "builds": [
     {
       "src": "src/server.ts",
@@ -14,10 +19,5 @@
       "src": "/(.*)",
       "dest": "src/server.ts"
     }
-  ],
-  "functions": {
-    "src/**/*.ts": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
