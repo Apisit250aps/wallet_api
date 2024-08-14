@@ -38,30 +38,30 @@ Register a new user.
 
 - **Success (201 Created):**
 
-```json
-{
-  "newUser": {
-    "username": "string",
-    "password": "string"
-  }
-}
-```
+    ```json
+    {
+    "newUser": {
+        "username": "string",
+        "password": "string"
+    }
+    }
+    ```
 
 - **Error (409 Conflict):**
 
-```json
-{
-  "error": "Username already exists"
-}
-```
+    ```json
+    {
+    "error": "Username already exists"
+    }
+    ```
 
 - **Error (500 Internal Server Error):**
 
-```json
-{
-  "error": "Server error message"
-}
-```
+    ```json
+    {
+    "error": "Server error message"
+    }
+    ```
 
 **Example Request**
 
