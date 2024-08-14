@@ -12,6 +12,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const auth_route_1 = __importDefault(require("./routes/auth.route"));
 const wallet_route_1 = __importDefault(require("./routes/wallet.route"));
 const transaction_route_1 = __importDefault(require("./routes/transaction.route"));
+const user_route_1 = __importDefault(require("./routes/user.route"));
 // define app
 const app = (0, express_1.default)();
 // app settings
@@ -26,7 +27,8 @@ app.get("/", (req, res) => {
     res.send("Hello, TypeScript with Express!");
 });
 app.use("/auth", auth_route_1.default);
+app.use("/user", user_route_1.default);
 app.use("/wallet", wallet_route_1.default);
 app.use("/transaction", transaction_route_1.default);
-// 
+//
 exports.default = app;

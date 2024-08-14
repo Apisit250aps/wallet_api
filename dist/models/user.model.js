@@ -28,6 +28,8 @@ const mongoose_1 = __importStar(require("mongoose"));
 const UserSchema = new mongoose_1.Schema({
     username: { type: String, required: true, unique: true },
     email: { type: String, required: false },
+    fname: { type: String, required: false },
+    lname: { type: String, required: false },
     password: { type: String, required: true },
     wallets: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Wallet" }],
     isAdmin: { type: Boolean, default: false },
