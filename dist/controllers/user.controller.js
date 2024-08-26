@@ -4,7 +4,7 @@ const user_model_1 = require("../models/user.model");
 exports.default = {
     async getUserInformation(req, res) {
         const userId = req.user?._id;
-        const user = await user_model_1.User.findOne({ userId })
+        const user = await user_model_1.User.findById(userId)
             .populate({
             path: "wallets"
         })
