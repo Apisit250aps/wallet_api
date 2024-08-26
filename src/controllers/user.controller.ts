@@ -8,6 +8,8 @@ export default {
         path: "wallets"
       })
       .exec()
+
+      res.json(user) 
   },
   async setProfileName(req: Request<IUser>, res: Response) {
     const { fname, lname } = req.body;
